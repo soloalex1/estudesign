@@ -1,0 +1,1207 @@
+@charset: "utf-8";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #F4F4F4;
+    /*overflow: hidden;*/
+}
+
+::-webkit-scrollbar{
+    width:2px;height:2px;
+}
+::-webkit-scrollbar-button{
+    width:2px;height:2px;
+}
+
+/* -------------------------------------------------cabeçalho da página------------------------------------------------- */
+
+#main-header {
+ top: 0;
+ overflow: hidden;
+ margin-bottom: 1%;
+ width: 100%;
+ pointer-events: none;
+ height: 15%;   
+}   
+
+#logo {
+    cursor: pointer;
+    width: 185px;
+    margin: 12% 2%;
+    pointer-events: auto;
+}
+
+#menu-icon {
+    float: right;
+    margin: 19% 2%;
+    pointer-events: auto;
+    color: white;
+    cursor: pointer;
+}
+
+#menuicon-container {
+    width: 5%;
+    height: 5%;
+    position: absolute;
+    right: 0.8%;
+    /*border: 1px solid darkred;*/
+    /*transition: 0.5s;*/
+}
+
+#closeicon-container {
+    width: 3.5%;
+    height: 2%;
+    /*border: 1px solid seagreen;*/
+    position: absolute;
+    right: 2.3%;
+    top: 4.0%;
+}
+
+#menuicon-container i img {
+    width: 70%;
+    height: 70%;
+}
+
+#menu-stack {
+    float: right;
+    right: 2%;
+    top: 2%;
+    margin-top: 2%;
+    color: #652D90;
+}
+
+#menu-icon:hover {
+    color: #efefef;
+}
+
+
+/* corpo da pÃ¡gina inicial */
+
+#landing-body {
+    position: absolute;
+    z-index: 500;
+    color: #565656; 
+    width: 100%;
+    overflow: hidden;
+}
+
+#inicio-container {
+    width: 410px;
+    height: 470px;
+    /*border: 1px solid white;*/
+    margin: 0 auto;
+    background-color: #fafafa;
+    pointer-events: none;
+}
+
+#logo-main {
+    width: 100%;
+    height: 80%;
+    /* margin: 0 auto; */
+    /* margin-top: 20%; */
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+#logo-main img {
+    width: 60%;
+    /* height: 100%; */
+}
+
+#starter {
+    text-align: center;
+    margin-top: 3%;
+    width: 100%;
+    pointer-events: none;
+    /*font-size: 90%;*/
+}
+
+#starter > a {
+    background-color: #652D90;
+    color: white;
+    padding: 10px 20px;
+    font-size: 150%;
+    font-family: 'Poppins', sans-serif;
+    /*border: none;*/
+    pointer-events: auto;
+    /*margin: 0 auto;*/
+}
+
+/* -------------------------------------------------menu escondido------------------------------------------------- */
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #F4F4F4;
+    opacity: 0.95;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.7s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-y: hidden; /*acrescentei isso pra extinguir barra de rolage, tá meio gambiarra*/
+}
+
+#sobre-hover {
+    width: 100%;
+    height: 0;
+    position: fixed;
+    z-index: 1002;
+    bottom: 0;
+    background-color: #F4F4F4;
+    overflow-x: hidden;
+    transition: 0.7s;
+}
+
+/* -------------------------------------------------links do menu------------------------------------------------- */
+#sidelogin {
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    transition: 0.3s;
+    font-family: 'Poppins Semibold', sans-serif;
+    text-align: center;
+    padding: 5%;
+}
+
+#close-stack {
+    color: #652D90;
+    float: right;
+    right: 1.8%/* 2% */;
+    top: -4%;
+}
+
+/* hover dos links */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #652d90;
+}
+
+/* icone pra fechar o menu */
+.sidenav .closebtn {
+    position: absolute;
+    top: -2%;
+    right: 5%;
+    color: white;
+}
+
+.sidebtn{
+    font-family: 'Poppins', sans-serif;
+}
+
+.sidebolinha {
+    padding: 2%;
+}
+
+#refer, #about {
+    font-size: 150%;
+    font-family: 'Poppins Semibold', sans-serif;
+}
+
+.aba-menu {
+    font-family: 'Poppins Regular', sans-serif;
+}
+
+#aba-sobre, #aba-referencias{
+    background-color: #F4F4F4;
+    width: 100%;
+    height: 80.5vh;
+    cursor: pointer;
+    transition: 0.5s;
+    position: absolute;
+    left: 0;
+    /*border: 1px solid blue;*/
+
+}
+#aba-sobre{
+    top: 50px;
+}
+
+#content-sobre {
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 0;
+    padding: 2%;
+    opacity: 0;
+
+    transition: 0.5s;
+}
+#content-ref {/*
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 0;
+    padding: 2%;*/
+    opacity: 0;
+
+    transition: 0.5s;
+}
+
+#content-sobre ul {
+    padding: 0;
+}
+
+#content-sobre ul li {
+    list-style-type: none;
+    text-decoration: none;
+    font-size: 130%;
+}
+
+#sobre-img {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+#smd-logo {
+    width: 30%;
+    float: right;
+    margin: 8% 10% 2% 2%;
+}
+
+#ufc-logo {
+    width: 40%;
+    float: left;
+    margin: 5%;
+}
+
+#aba-referencias{
+    top: -10px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* -------------------------------------------------tela de seleção de conceitos------------------------------------------------- */
+
+#escolher-conceito {
+    width: 50%;
+    background-color: blue; 
+}
+
+#div-tipo {
+    background-color: red;
+    width: 10%;
+}
+
+.title-selection {
+    font-family: 'Tungsten Rounded Book', serif;
+    font-size: 550%;
+    text-align: center;
+}
+
+.row {
+    display: -webkit-flex;
+    display: flex;
+    margin: 2% auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.bt-concept {
+    margin: 10px;
+    transition: 0.8s;
+}
+
+.bt-concept:hover {
+    box-shadow: 5px 5px 5px #9191A6;
+}
+
+/* -------------------------------------------------tela de login------------------------------------------------- */
+
+#login-title {
+    font-size: 450%;
+}
+
+#login-container {
+    margin: 0 auto;
+    width: 650px;
+    height: 350px;
+    position: relative;
+}
+
+div#avatar-container {
+    /* float: left; */
+    background-color: #fdfdfd;
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    left: -7.5px;
+    top: 0;
+}
+div#name-container {
+    width: 40%;
+    height: 195px;
+    background-color: #2CB1BE;
+    position: absolute;
+    right: -7.5px;
+    top: 0;
+}
+a#login {
+    width: 40%;
+    height: 140px;
+    background-color: #F8931F;
+    color: #F5f5f5;
+    font-size: 230%;
+    font-family: 'Poppins Medium', sans-serif;
+    text-align: center;
+    padding-top: 50px;
+    position: absolute;
+    right: -7.5px;
+    bottom: 0;
+}
+
+#login > p {
+    text-align: center;
+    padding-top: 15%;
+}
+
+#perfil {
+    text-align: center;
+}
+
+#desafios, #conquistas {
+    margin-left: 3%;
+    margin-top: 60px;
+    /*top: 7.5%;*/
+    width: 70%;
+    height: 98%;
+    float: left;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*border: 1px solid black;*/
+    text-align: center;
+}
+
+.medalhas{
+    width: 150px;
+    height: 155px;
+    /*background-color: #142;*/
+    display: inline-block;
+    margin: 10px 30px;
+}
+.medalhaBronze{
+    background-image: url('../img/medalhaBronze.svg');
+    background-size: cover;
+}
+.medalhaPrata{
+    background-image: url('../img/medalhaPrata.svg');
+    background-size: cover;
+}
+.medalhaOuro{
+    background-image: url('../img/medalhaOuro.svg');
+    background-size: cover;
+}
+.medalha-block{
+    filter: contrast(0%);
+}
+
+#side-header {
+    height: 8.5%;
+    width: 70%;
+    /*border: 1px solid red;*/
+    /*margin-bottom: -1%;*/
+    margin-left: 3%;
+    position: absolute;
+    background-color: #F4F4F4;
+    opacity: 0.9;
+    z-index: 300;
+}
+
+#conquistas > div {
+    width: 100%;
+    height: 250px;
+    margin-top: 40PX;
+    /*background-color: gray;*/
+    /*margin: 0 0.1%;*/
+    /*float: left;*/
+    /*box-sizing: border-box;*/
+}
+
+#container-desafio {
+    height: 100%;
+    width: 100%;
+}
+
+#desafios > div {
+    width: 32%;
+    height: 90%;
+    margin: 0.3%;
+    float: left;
+    cursor: pointer;
+    /*top: 10%;*/
+    bottom: 0;
+    position: relative;
+    opacity: 1;
+}
+#desafios > span {
+    padding-top: 50px;
+}
+
+#barra-vert {
+    width: 0.3%;
+    height: 88%;
+    background-color: #B3B3B3;
+    position: fixed;
+    opacity: 0.3;
+    margin-left: 0.7%;
+}
+
+#menu2 {
+    width: 24%;
+    height: 88.5%;
+    float: right;
+    margin-top: 3%;
+    /*border: 1px solid black;*/
+    text-align: center;
+    position: relative;
+}
+#menu2 > section{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    margin-top: 125px;
+}
+
+.user-titulo, #user-nome, .user-titulo-naoAtivo {
+    font-family: 'Poppins', sans-serif;
+}
+#user-nome {
+    font-weight: bolder;
+    margin-top: -2px;
+}
+#user-nome:hover{
+    background-color: rgba(0,0,0,0.05);
+}
+#user-nome:focus{
+    outline:none;
+    background-color: rgba(0,0,0,0.1);
+}
+.user-titulo {
+    color: #652d90;
+    font-weight: bold;
+    margin-top: -15px;
+}
+.user-titulo-naoAtivo {
+    font-weight: bold;
+}
+
+#tema1, #tema2, #tema3 {
+    color: #F4F4F4;
+    font-weight: bold;
+    bottom: 0;
+    opacity: 0.70;
+    transition: 0.7s;
+    background-position-y: 130px;
+}
+
+#tema1 {
+    background-color: #60C2C5;/*
+    background-image: url('../img/areasMenu.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: 0px;
+    position: relative;
+    border: 1px solid green;*/
+}
+
+#tema2 {
+    background-color: #E5176B;/*
+    background-image: url('../img/areasMenu.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: -350px;
+    border: 1px solid green;*/
+}
+
+#tema3 {
+    background-color: #F8931F;/*
+    background-image: url('../img/areasMenu.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: -700px;
+    border: 1px solid green;*/
+}
+
+/*#tema1:hover, #tema2:hover, #tema3:hover, .blocked:hover {
+    opacity: 1;
+    background-position-y: -10px;
+}*/
+
+.tema-bg, .tema-conteudo{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    transition: 0.5s;
+
+}
+.tema-bg{
+    background-image: url('../img/areasMenu_bg.svg');
+    background-position-y: 0px;
+    opacity: 0;
+}
+.tema-conteudo{
+    background-image: url('../img/areasMenu.svg');
+    background-position-y: 120px;
+    opacity: 1;
+}
+
+#tema2 > .tema-bg{
+    background-position-x: 50%/*-305px*/;
+}
+#tema2 > .tema-conteudo{
+    background-position-x: 50%/*-305px*/;
+}
+#tema3 > .tema-bg{
+    background-position-x: 100%/* -625px */;
+}
+#tema3 > .tema-conteudo{
+    background-position-x: 100%/* -625px */;
+}
+
+
+#menu-selection {
+    width: 100%;
+    text-align: center;
+    margin: 15px auto;
+}
+
+#menu-selection > span {
+    margin: 0 2%;
+    font-family: 'Poppins Medium', sans-serif;
+    text-decoration: none;
+}
+
+#menu-selection > span:hover {
+    text-decoration: underline;
+}
+
+#menu-selection > span:active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#btn-desafio {
+    color: #652D90;
+    font-size: 160%;
+}
+
+#btn-conq {
+    color: #C9C9C9;
+    font-size: 140%;
+}
+
+#menu-selection > button:hover {
+    text-decoration: underline;
+}
+
+#menu-selection > button:active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#conquistas {
+    display: none;
+    /*padding-top: 5%;*/
+}
+
+/* -------------------------------------------------tela de login - conteúdos------------------------------------------------- */
+
+div#name-container *{
+    /*background-color: #512;*/
+    width: 100%;
+    height: 50%;
+    display: inline-block;
+    text-align: center;
+}
+div#name-container form#nomeFeice-Nome input{
+    width: 90%;
+    height: 50%;
+    margin-top: 35px;
+    padding-top: 15px;
+
+    font-size: 165%;
+    font-family: Poppins Medium;
+    text-align: left;
+    color: #fdfdfd;
+
+    border-style: none;
+    background-color: transparent;
+    border-bottom: 2px solid #fdfdfd;
+}
+div#name-container form#nomeFeice-Nome input::placeholder{
+    color: #fdfdfd;
+    opacity: 0.3;
+}
+div#name-container a#nomeFeice-Feice{
+    background-image: url('../img/feice.svg');
+    background-repeat: no-repeat;
+    background-size: 190px;
+    background-position: 13px;
+}
+form#nomeFeice-Nome::after{
+    content: " ";
+    background-image: url('../img/iconePerfil.svg');
+    background-repeat: no-repeat;
+    background-size: 20px;
+
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -15px;
+    top: 45px;
+}
+
+
+
+
+
+
+    /* -------------------------------------------------tela de jogos------------------------------------------------- */
+    #game{
+        margin-top: -111px;
+    }
+    /*---------------------CSS DO POP UP DE INSTRUÇÕES--------------------*/
+
+    /* The Modal (background) */
+    .modal {
+        position: fixed; /* Stay in place */
+        z-index: 2; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        text-align: center;
+        position: relative;
+        background-color: #652D90;
+        margin: auto;
+        padding: 0px 0px 50px 0px;
+        width: 34%;
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+    }
+
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        opacity: 0.8;
+        position: relative;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    .modal-content > header {
+        padding: 2px 16px;
+        background-color: #652D90;
+
+    }
+    .modal-content > header > h2 {
+        color: white;
+        text-align: center;
+        font-family: Tungsten Rounded Medium;
+        font-size: 53px; 
+        position: relative;
+        bottom: 20px;
+    }
+
+    .modal-body {
+        background-color:#652D90;
+        padding: 0px 30px; font-family: Poppins;
+        font-size: 21px;
+        text-align: center; 
+        color: #FFF;
+    }
+
+    /*-------------------------------------------CSS DO JOGO-----------------------------------------------*/
+
+    #game_screen {
+        width: 1300px;
+        height: 590px; /*aqui tava 640*/
+        margin: 0 auto;
+        margin-bottom: 1%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #header_jogo {
+        text-align: center; 
+        font-family: Poppins Medium; 
+        font-size: 32px; 
+        color: #652D90;
+        margin: 2% 0% 0.5% 0%;
+    }
+
+    #contents {
+        width: 220px;
+        height:36px;
+        background-color: #652D90;
+        padding-top: 5px;
+        float: right;
+        text-align: center;
+        transform: rotate(-90deg);
+        color:#EAEAEA;
+        font-family: Poppins Medium;
+        font-size: 22px;
+
+
+        position: absolute;
+        left: -128px;
+        top: 50%;
+    }
+    #contents:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    #menuDicas {
+        background-color: #eee;
+        width: 500px;
+        height: 100%;
+        padding: 25px 50px;
+        position: absolute;
+        right: -500px;
+        transition: 1s;
+        z-index: 1000;
+        font-family: Poppins;
+    }
+    #menuDicas p {
+        text-align: justify;
+    }
+
+    #dicas{
+        height: 105%;
+        overflow-y: auto;
+    }
+
+    /*------------------------------------------------------Menu Pausa--------------------------------------------------------*/
+    #btn_pause {
+        background-color: transparent;
+        border-style: none;
+        float: left;
+        margin: 1.5%;
+        position: relative;
+        bottom: 100px;
+    }
+
+    .btnJogo{
+        width: 60%;
+        margin: 10px 30px;
+        padding: 3% 0%;
+        background-color: #FFF;
+        text-align: center;
+        color:#652D90;
+        font-family: Poppins Regular;
+        font-size: 28px;
+        border-style: none;
+        border-radius: 0;
+        box-shadow: 5px 5px rgba(0,0,0,0.2);
+    }
+
+    #btn_sairDerrota {
+        margin-bottom: 17%;
+    }
+    #btn_sairPause {
+        margin: 50px 30px;       
+    }
+
+    .btn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* The Modal (background) */
+    .modal2 {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content2 {
+        text-align: center;
+        position: relative;
+        background-color: #652D90;
+        margin: auto;
+        width: 34%;
+        box-shadow: 5px 5px rgba(0,0,0,0.2);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+    }
+
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    /* The Close Button */
+    .close2 {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        opacity: 0.8;
+        position: relative;
+        top: 20px;
+        right: 20px;
+        z-index: 10;
+    }
+
+    .close2:hover,
+    .close2:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 1;
+    }
+
+    .modal-content2 > header {
+        padding: 2px 16px;
+        background-color: #652D90;
+
+    }
+    .modal-content2 > header > h2 {
+        color: white;
+        text-align: center;
+        font-family: Tungsten Rounded Medium;
+        font-size: 53px; 
+        position: relative;
+        bottom: 20px;
+    }
+
+    .modal-body2 {
+        background-color:#652D90;
+        padding: 0px 30px; font-family: Poppins;
+        font-size: 21px;
+        text-align: center; 
+        color: #FFF;
+    }
+    /*----------------------------------- tela de derrota------------------------------------*/
+    .modal3 {
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content3 {
+        text-align: center;
+        position: relative;
+        background-color: #652D90;
+        margin: auto;
+        width: 34%;
+        box-shadow: 5px 5px rgba(0,0,0,0.2);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+    }
+
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
+
+    .modal-content3 > header {
+        padding: 2px 16px;
+        background-color: #652D90;
+
+    }
+    .modal-content3 > header > h2 {
+        color: white;
+        text-align: center;
+        font-family: Tungsten Rounded Medium;
+        font-size: 53px; 
+        margin: 15% 0px;
+    }
+
+
+
+/* ------------------------------------------------- aparição dos avatares / no login e no menu ------------------------------------------------- */
+
+span.setas{
+    /*background-color: #511;*/
+    width: 20%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+
+    background-repeat: no-repeat;
+    background-size: 23%;
+    background-position: 50% 50%;
+
+    cursor: pointer;
+}
+span.setaVem{
+    left: 0;
+    background-image: url('../img/setasAvatar.svg');
+    transform: rotate(180deg);
+}
+span.setaVai{
+    right: 0;
+    background-image: url('../img/setasAvatar.svg');
+}
+
+span#avatarLogin{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    background-image: url('../img/avatares.svg');
+    background-repeat: no-repeat;
+    background-size: 840%;
+    background-position: 105px 45%; /*105 também referenciado no tudoInterface, aqui ele surge como inicial, antes da interação*/
+
+    transition: 0.5s;
+}
+span#user-avatarMenu{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+
+    background-image: url('../img/avatares.svg');
+    background-repeat: no-repeat;
+    background-size: 950%;
+    background-position: 50px 45%;
+
+    position: relative;
+
+    transition: 0.5s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------fontes JOGO TIPOGRAFIA------------------------------------------------- */
+
+/*Terror*/
+@font-face {
+    font-family:"metal macabre";
+    src: local("fonts/metal macabre/MetalMacabre.ttf"), url("fonts/metal macabre/MetalMacabre.ttf");
+}
+
+@font-face {
+    font-family:"vampdator";
+    src: local("fonts/vampdator/RIKY2vamp.ttf"), url("fonts/vampdator/RIKY2vamp.ttf");
+}
+
+@font-face {
+    font-family:"Zombie_Holocaust";
+    src: local("fonts/Zombie_Holocaust/Zombie_Holocaust.ttf"), url("fonts/Zombie_Holocaust/Zombie_Holocaust.ttf");
+}
+
+/*Romance*/
+@font-face {
+    font-family:"Love and Trust";
+    src: local("fonts/love and trust/Love and Trust.ttf"), url("fonts/love and trust/Love and Trust.ttf");
+}
+
+@font-face {
+    font-family:"Ethernal";
+    src: local("fonts/ethernal/EthernalLight_personal.ttf"), url("fonts/ethernal/EthernalLight_personal.ttf");
+}
+/*Futurista*/
+@font-face {
+    font-family:"Anurati Regular";
+    src: local("fonts/ANURATI/Anurati-Regular.otf"), url("fonts/ANURATI/Anurati-Regular.otf");
+}
+
+@font-face {
+    font-family:"Blanka Regular";
+    src: local("fonts/BLANKA/Blanka-Regular.otf"), url("fonts/BLANKA/Blanka-Regular.otf");
+}
+/*Antiga*/
+@font-face {
+    font-family:"ACKNO";
+    src: local("fonts/acknowledgement/ACKNO.TTF"), url("fonts/acknowledgement/ACKNO.TTF");
+}
+
+@font-face {
+    font-family:"akaPosse";
+    src: local("fonts/akaposse/akaPosse.ttf"), url("fonts/akaposse/akaPosse.ttf");
+}
+/*Glamour*/
+
+@font-face {
+    font-family:"Chocolate Box";
+    src: local("fonts/Chocolate box/C_BOX.TTF"), url("fonts/Chocolate box/C_BOX.TTF");
+}
+
+@font-face {
+    font-family:"Cinzel Decorative";
+    src: local("fonts/cinzel decorative/CinzelDecorative-Regular.ttf"), url("fonts/cinzel decorative/CinzelDecorative-Regular.ttf");
+}
+
+ /* fontes */
+
+@font-face /* Tungsten Rounded Book*/ {
+    font-family: 'Tungsten Rounded Book';
+    src: url('../fonts/tungsten-rounded/tungsten-rounded-book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Medium*/  {
+    font-family: 'Tungsten Rounded';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Semibold*/  {
+    font-family: 'Tungsten Rounded Semibold';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Semibold.otf');
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Bold*/ {
+    font-family: 'Tungsten Rounded';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Light*/ {
+    font-family: 'Tungsten Rounded';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Light.otf');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Black*/ {
+    font-family: 'Tungsten Rounded';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Black.otf');
+    font-weight: bolder;
+    font-style: normal;
+}
+
+@font-face /* Tungsten Rounded Book*/ {
+    font-family: 'Tungsten Rounded';
+    src: url('../fonts/tungsten-rounded/Tungsten Rounded Book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face /* Poppins Regular */ {
+    font-family: 'Poppins';
+    src: url('../fonts/poppins/Poppins-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face /*Poppins Medium*/ {
+    font-family: 'Poppins Medium';
+    src: url('../fonts/poppins/Poppins-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}

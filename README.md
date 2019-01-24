@@ -1,11 +1,15 @@
 # Estudesign
 
+Uma aplicação web para ajudar a ensinar conceitos de design para iniciantes, estudantes e interessados, aliando teoria e prática com uma abordagem lúdica e interativa.
 
-Today, being a developer demands the know-how on many areas. The market prioritizes programmers with notions of design and arts, once they can have an easier communication with the coworkers responsible for that part of the project.
+## Equipe Chibata:
 
-With this in mind, and aiming on college courses that graduate hybrid professionals - like the course of Digital Systems and Media from Federal University of Ceará - us, the students of the team Chibata developed a web application that helps individuals on the preparation for the design area, bringing it on a ludic way, making use of various minigames and interactions. We believe this can help practicing and fixing the content seen in the classroom.
+- [João Victor de Alencar](https://github.com/joaovictoralencar)
+- [Tiego Campos](https://www.behance.net/tieego)
+- [Letícia Cavalcante](https://www.behance.net/leticavalcante)
+- [Izac Sidarta](https://www.behance.net/izacsidart4035)
+- [Alexandre Machado](https://github.com/soloalex1)
 
-//
 
 Hoje em dia, ser um desenvolvedor demanda um know-how em várias áreas diferentes. O mercado dá prioridade a programadores com noções de design e artes, uma vez que estes podem ter uma comunicação mais fácil com os colegas de trabalho responsáveis por estas partes do projeto.
 

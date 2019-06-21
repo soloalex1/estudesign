@@ -6,12 +6,12 @@ function getRandomInt(min, max) {//função que retorna um numero inteiro
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var game = new Phaser.Game(1300, 590, Phaser.CANVAS, 'jogo', { preload: preload, create: create, update: update}); /*height tava 640*/
-var tipografias = [];//vertor com as tipografias que aparecerão na tela
+const game = new Phaser.Game(1300, 590, Phaser.CANVAS, 'jogo', { preload: preload, create: create, update: update}); /*height tava 640*/
+let tipografias = [];//vertor com as tipografias que aparecerão na tela
 
 //Classe tipografia. Ela possui um tema, uma velocidade, uma identidade e uma posição no vetor
-Tipografia = function() {
-    this.tema;//ex: terror, amor, glamour
+Tipografia = () => {
+    this.tema; //ex: terror, amor, glamour
     this.velocidade;
     this.identidade;
     this.posicao;
@@ -20,7 +20,7 @@ Tipografia = function() {
 }
 
 //A função criar palavra é o início de tudo. Ela checa qual é a identidade da tipografia antes de definir qual sua fonte e tamanho.
-Tipografia.prototype.criarPalavra = function() {
+Tipografia.prototype.criarPalavra = () => {
 
     /*Primeiro: definir um tema (terror, amor, futurista, etc)
     Segundo: definir a identidade (qual tipo de fonte vai ser (ex: Poppins Medium, Verdana))
@@ -29,8 +29,8 @@ Tipografia.prototype.criarPalavra = function() {
 
     //PRIMEIRO
 
-    this.tema = getRandomInt(1,5);//definindo tema
-    console.log(this.tema);  
+    this.tema = getRandomInt(1,5); //definindo tema 
+    
     /*
     1 = fantasia
     2 = impressionismo
@@ -43,7 +43,7 @@ Tipografia.prototype.criarPalavra = function() {
     
     //SEGUNDO
     this.posX = 200 + getRandomInt(0,4)*250;
-    for (var i = 1; i < totalTipoNaTela; i++) {
+    for (let i = 1; i < totalTipoNaTela; i++) {
         if (this.posX == tipografias[i].posX) {
             this.posX = 200 + getRandomInt(0,4)*250;            
         }
@@ -51,7 +51,7 @@ Tipografia.prototype.criarPalavra = function() {
 
     //TERCEIRO: definir a identidade
 
-    if (this.tema == 1) {//fantasia
+    if (this.tema == 1) { //fantasia
         switch (this.identidade) {
             case 1: 
                this.textSprite = game.add.sprite(this.posX, 100, "fantasia1");
@@ -135,54 +135,40 @@ Tipografia.prototype.criarPalavra = function() {
             break;
         }
     }
-    // this.textSprite.alpha = 1; //botei um alphasim só pra letra não ficar chapada
+
     this.textSprite.anchor.setTo(0.5, 0.5);
     this.textSprite.events.onInputOver.add(function(){this.textSprite.scale.setTo(1.03); this.textSprite.input.useHandCursor = true;}, this); //hover
     this.textSprite.events.onInputOut.add(function(){this.textSprite.scale.setTo(1);}, this);
-    //this.textSprite.anchor.setTo(0, 0);
 
-    game.physics.enable(this.textSprite, Phaser.Physics.ARCADE);//adicionando a física para usar as propriedade de body (somete disponíveis em sprites) 
-    this.textSprite.body.velocity.y = this.velocidade;//definindo a velocidade da letra para ser a mesma do construtor
+    game.physics.enable(this.textSprite, Phaser.Physics.ARCADE); //adicionando a física para usar as propriedade de body (somete disponíveis em sprites) 
+    this.textSprite.body.velocity.y = this.velocidade; //definindo a velocidade da letra para ser a mesma do construtor
     this.textSprite.inputEnabled = true;
-    this.textSprite.events.onInputDown.addOnce(tipografias[this.posicao].clicar, this);//quando o texto for clicado, chama função clicar somente para o obejto da posição certa
+    this.textSprite.events.onInputDown.addOnce(tipografias[this.posicao].clicar, this); //quando o texto for clicado, chama função clicar somente para o obejto da posição certa
 }
 
 //Função Loop que vai checar se a tipografia chegou ao fim da tela.
-Tipografia.prototype.atualiza = function() {
+Tipografia.prototype.atualiza = () => {
     if (this.textSprite.world.y -50 >= game.world.height) {//condição
         if (this.tema == temaTela) {//caso o tema seja o mesmo, então o jogador deixou passar a correta, o que significa que ele perdeu
-            console.log("Perdeu, playboy. Deixou passar o certo");
-            console.log("Tema da Fonte = "+this.tema+" /Tema da tela = "+temaTela);
             perdeu();
         } else {//caso não seja o mesmo tema, vamos reaproveitar a tipografia que caiu e apenas redefini-la
-            pontos+=5;
+            pontos += 5;
             pontosText.setText(pontos + " Pontos");
-            tipografias[this.posicao].textSprite.kill();//matamos o sprite
-            tipografias[this.posicao].criarPalavra();//redefinimos ela
+            tipografias[this.posicao].textSprite.kill(); //matamos o sprite
+            tipografias[this.posicao].criarPalavra(); //redefinimos ela
         }
     }
 }
 
-// function auxx(esse){
-//     var aaa = 0.001;
-//     if(esse.textSprite.alpha >= 1 || esse.textSprite.alpha <= 0.2){
-//         aaa = !aaa;
-//     }
-//     esse.textSprite.alpha += aaa;
-//     console.log(esse.textSprite.alpha);
-// }
+// QUANDO A TIPOGRAFIA FOR CLICADA, ESSA FUNÇÃO SERÁ CHAMADA. ELA IRÁ CHECAR SE A TIPOGRAFIA CLICADA TEM O MESMO TEMA DA TELA OU NÃO
 
-//QUANDO A TIPOGRAFIA FOR CLICADA, ESSA FUNÇÃO SERÁ CHAMADA. ELA IRÁ CHECAR SE A TIPOGRAFIA CLICADA TEM O MESMO TEMA DA TELA OU NÃO
-
-Tipografia.prototype.clicar = function() {
+Tipografia.prototype.clicar = () => {
     if(this.tema == temaTela) {//checando se elas tem o mesmo tema da tela
-        tipografias[this.posicao].textSprite.kill();//destruindo o sprite
-        this.criarPalavra();//criando um novo
-        pontos+=10;//adicionando pontos
+        tipografias[this.posicao].textSprite.kill(); //destruindo o sprite
+        this.criarPalavra(); //criando um novo
+        pontos += 10; //adicionando pontos
         pontosText.setText(pontos + " Pontos");
-        console.log("ACERTOU");
     } else {
-        console.log("Perdeu, playboy. Clicou no errado.");
         perdeu();
     }
 }
@@ -190,27 +176,27 @@ Tipografia.prototype.clicar = function() {
 //---------------------------FIM DA CLASSE TIPOGRAFIA------------------------------------
 
 //A primeira coisa a se fazer é criar um vetor com todas as tipografias já prontas, já definindo suas posições.
-for (var i = 0; i < 11; i++) {
+for (let i = 0; i < 11; i++) {
     tipografias[i] = new Tipografia();
     tipografias[i].posicao = i;
 }
 
-var temaTela = 1;//tema da tela
-var pontos = 0;//pontuação do jogador
-var totalTipoNaTela = 1;//total de tipografias na tela
-var pontosText;//texto dos pontos que vai ser exibido na tela
-var timer; //timer pra auxiliar no tempo
-var total = 0;//variável que vai contar os segundos
-var textTimer;//texto que vai escrever o tempo na tela
-var minutos = 0;//minutos do timer
-var mudaTemaSafe = true;
+let temaTela = 1;//tema da tela
+let pontos = 0;//pontuação do jogador
+let totalTipoNaTela = 1;//total de tipografias na tela
+let pontosText;//texto dos pontos que vai ser exibido na tela
+let timer; //timer pra auxiliar no tempo
+let total = 0;//variável que vai contar os segundos
+let textTimer;//texto que vai escrever o tempo na tela
+let minutos = 0;//minutos do timer
+let mudaTemaSafe = true;
 
 function updateCounter() {
     total++;
-    if (total%4 == 0) {
+    if (total % 4 == 0) {
         if (mudaTemaSafe) {
             temaTela = getRandomInt(1,5);
-            var temaTelaIndicativo = "";
+            let temaTelaIndicativo = "";
             switch (temaTela) {
                 case 1:
                     temaTelaIndicativo = "fantasia";
@@ -228,7 +214,6 @@ function updateCounter() {
                 break;
             }
             c.frame = temaTela-1;
-            console.log(temaTela);
         }
     }
 
@@ -236,12 +221,9 @@ function updateCounter() {
         minutos++;
         total = 0;
     }
-    if (total < 10) {
-        textTimer.setText("TEMPO " + minutos +":" + "0" + total);
-    } else {
-        textTimer.setText("TEMPO " + minutos +":" + total);
-    }
-
+    
+    (total < 10) ? textTimer.setText(`TEMPO ${minutos}:0${total}`) : textTimer.setText(`TEMPO ${minutos}:${total}`);
+    
     if (total%30 == 0) {
         if (totalTipoNaTela < 11) {
             addTipo();
@@ -254,30 +236,31 @@ function addTipo() {
 }
 
 function preload() {
-
-    for(var i = 1; i < 6; i++) {
-        game.load.image("fantasia"+i.toString(),"img/fantasia"+i.toString()+".png");
+    for(let i = 1; i < 6; i++) {
+        game.load.image(`fantasia${i.toString()}`,`img/fantasia${i.toString()}.png`);
     }
-        for(var i = 1; i < 6; i++) {
-        game.load.image("manuscrita"+i.toString(),"img/manuscrita"+i.toString()+".png");
+    for(let i = 1; i < 6; i++) {
+        game.load.image(`manuscrita${i.toString()}`,`img/manuscrita${i.toString()}.png`);
     }
-        for(var i = 1; i < 6; i++) {
-        game.load.image("sem_serifa"+i.toString(),"img/sem_serifa"+i.toString()+".png");
+    for(let i = 1; i < 6; i++) {
+        game.load.image(`sem_serifa${i.toString()}`,`img/sem_serifa${i.toString()}.png`);
     }
-        for(var i = 1; i < 6; i++) {
-        game.load.image("serifada"+i.toString(),"img/serifada"+i.toString()+".png");
+    for(let i = 1; i < 6; i++) {
+        game.load.image(`serifada${i.toString()}`,`img/serifada${i.toString()}.png`);
     }
 
     game.load.spritesheet("bg","img/bg.png",1300,640,4);
 }
-var c;
+
+let c;
 function create() {
-    c = game.add.sprite(0,0,"bg");
-    for (var i = 0; i < totalTipoNaTela; i++) {
+    c = game.add.sprite(0, 0, "bg");
+    
+   for (let i = 0; i < totalTipoNaTela; i++) {
         tipografias[i].criarPalavra();
     }
-    textTimer = game.add.text(game.world.centerX+250, 50, "TEMPO " + minutos +":" + total+ "0", { font: 'bold 20pt Poppins Medium', fill: "#000" });
-    pontosText = game.add.text(1100,50, pontos + " Pontos", { font: 'bold 20pt Poppins Medium', fill: "#000" });
+    textTimer = game.add.text(game.world.centerX + 250, 50, `TEMPO ${minutos}:${total}0`, { font: 'bold 20pt Poppins Medium', fill: "#000" });
+    pontosText = game.add.text(1100, 50, pontos + " Pontos", { font: 'bold 20pt Poppins Medium', fill: "#000" });
     
     timer = game.time.create(false);
 
@@ -291,7 +274,7 @@ function create() {
 }
 
 function update() {
-    for (var i = 0; i < totalTipoNaTela; i++) {
+    for (let i = 0; i < totalTipoNaTela; i++) {
         if (tipografias[i] != null) {
             tipografias[i].atualiza();
             if (tipografias[i].textSprite.world.y <= game.world.height - 100) {
